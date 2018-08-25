@@ -3,6 +3,8 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_music_player/theme.dart';
 
+
+//this widget is creating the bottom part of the screen where we have the controls and the song name and the artist name.
 class BottomControls extends StatelessWidget {
   const BottomControls({
     Key key,
@@ -13,6 +15,8 @@ class BottomControls extends StatelessWidget {
     return new Container(
       width: double.infinity,
 
+      // when we try to give splash and highlight color to the next and previous button it looks for immediate material widget
+      // TODO: 1. look for the reason for this again.
       child: new Material(
         color: accentColor,
         shadowColor: const Color(0x44000000),
@@ -21,10 +25,12 @@ class BottomControls extends StatelessWidget {
           child: new Column(
             children: <Widget>[
 
+              // rich text enables having two text views with different styles in a single widget
               new RichText(
                 text: new TextSpan(
                     text: '',
                     children: [
+                      // this text span displays the title of the song
                       new TextSpan(
                           text: 'Song Title\n',
                           style: new TextStyle(
@@ -37,6 +43,7 @@ class BottomControls extends StatelessWidget {
                       ),
 
                       new TextSpan(
+                        // this text span displays the artist name of the song
                           text: "Artist Name",
                           style: new TextStyle(
                               color: Colors.white.withOpacity(0.75),
@@ -48,6 +55,8 @@ class BottomControls extends StatelessWidget {
 
                     ]
                 ),),
+
+              // here we have the controls i.e. previous, pause and next buttons
               Padding(
                 padding: const EdgeInsets.only(top: 40.0),
                 child: new Row(
@@ -85,6 +94,9 @@ class PlayPauseButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    // creating a raw material button so that we can have that splash and highlight effect
+    // TODO: 2. look at this again in the video
     return new RawMaterialButton(
       shape: new CircleBorder(),
       fillColor: Colors.white,
@@ -107,6 +119,8 @@ class PlayPauseButton extends StatelessWidget {
   }
 }
 
+
+// for the previous button we added Material widget so that splash and highlight can work
 class PreviousButton extends StatelessWidget {
   const PreviousButton({
     Key key,
